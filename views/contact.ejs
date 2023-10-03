@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Sahithya</title>
+    <link rel="icon" href="assets/Logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <style>
+        /* Styles for the popup modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 20% auto;
+            padding: 20px;
+            width: 70%;
+            text-align: center;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/navbar.ejs') %>
+    <div class="contact-container">
+        <h2>Contact Me</h2>
+        <div class="contact-info">
+            <div class="contact-panel">
+                <h3>Contact Information</h3>
+                <p><strong>Name:</strong> Sahithya Vallabhaneni</p>
+                <p><strong>Email:</strong> sahithya.v01@gmail.com</p>
+                <p><strong>Phone:</strong> +1 437 981 9209</p>
+            </div>
+            <div class="contact-form">
+                <h3>Send a Message</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactNumber">Contact Number</label>
+                        <input type="tel" id="contactNumber" name="contactNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <input id="message" name="message" required>
+                    </div>
+                    <button type="submit">Send Message</button>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="popup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-button">&times;</span>
+            <h2>Thank You!</h2>
+            <p>Your message has been sent successfully.</p>
+        </div>
+    </div>
+    <%- include('partials/footer.ejs') %>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const modal = document.getElementById("popup-modal");
+            const closeButton = document.getElementById("close-button");
+
+            // Show the modal when the form is submitted
+            const form = document.querySelector("form");
+            form.addEventListener("submit", function (e) {
+                e.preventDefault(); // Prevent the form from submitting
+                modal.style.display = "block";
+            });
+
+            // Close the modal when the close button is clicked
+            closeButton.addEventListener("click", function () {
+                modal.style.display = "none";
+            });
+        });
+    </script>
+</body>
+</html>
